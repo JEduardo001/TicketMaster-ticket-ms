@@ -55,7 +55,7 @@ public class TicketController {
     @GetMapping()
     public ResponseEntity<DtoResponseApi> getAllSeat(
             @Parameter(description = "UUID cursor for pagination") @RequestParam(required = false) UUID lastId,
-            @Parameter(description = "Page size limit") @RequestParam(defaultValue = "160") int limit
+            @Parameter(description = "Page size limit") @RequestParam(defaultValue = "60") int limit
     ) {
         return ResponseEntity.ok(DtoResponseApi.builder()
                 .status(HttpStatus.OK.value())

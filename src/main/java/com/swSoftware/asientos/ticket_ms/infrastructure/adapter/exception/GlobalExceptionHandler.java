@@ -2,6 +2,7 @@ package com.swSoftware.asientos.ticket_ms.infrastructure.adapter.exception;
 
 import com.swSoftware.asientos.ticket_ms.application.dto.responseApi.DtoErrorResponseApi;
 import com.swSoftware.asientos.ticket_ms.application.exception.handler.ApplicationExceptionHandler;
+import com.swSoftware.asientos.ticket_ms.infrastructure.adapter.exception.ticket.ExceptionTicketNotFound;
 import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -32,11 +33,13 @@ public class GlobalExceptionHandler extends ApplicationExceptionHandler {
         return ResponseEntity.status(400).body(errors);
     }
 
+    @ExceptionHandler(ExceptionTicketNotFound.class)
+    public ResponseEntity<DtoErrorResponseApi> ExceptionTicketNotFound(Exception ex) {
+        return ResponseEntity.status(404).body(new DtoErrorResponseApi("TICKET_NOT_FOUND", 404, getIdCorrelation()));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<DtoErrorResponseApi> handleTechnical(Exception ex) {
         return ResponseEntity.status(500).body(new DtoErrorResponseApi("SERVER_ERROR", 500, getIdCorrelation()));
     }
-
-
-
 }
