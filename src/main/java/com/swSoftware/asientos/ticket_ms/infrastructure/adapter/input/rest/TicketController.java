@@ -30,13 +30,13 @@ public class TicketController {
     private final GetTicketUseCase getTicketUseCase;
     private final GetAllTicketsUseCase getAllTicketsUseCase;
 
-    @PatchMapping("/{idTicket}")
-    public ResponseEntity<DtoResponseApi> updateSeat(@PathVariable UUID idTicket, @Valid @RequestBody DtoUpdateTicket request){
+    @PutMapping()
+    public ResponseEntity<DtoResponseApi> updateSeat(@Valid @RequestBody DtoUpdateTicket request){
         return ResponseEntity.status(HttpStatus.CREATED).body(DtoResponseApi.builder()
                 .status(HttpStatus.CREATED.value())
                 .message("Ticket updated")
                 .idCorrelation(MDC.get(CORRELATION_KEY.toString()))
-                .data(updateTicketUseCase.execute(idTicket,request))
+                .data(updateTicketUseCase.execute(request))
                 .build()
         );
     }

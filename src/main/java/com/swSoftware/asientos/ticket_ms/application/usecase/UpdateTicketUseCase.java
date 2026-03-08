@@ -6,5 +6,5 @@ import com.swSoftware.asientos.ticket_ms.application.dto.ticket.DtoUpdateTicket;
 import java.util.UUID;
 
 public interface UpdateTicketUseCase {
-    DtoTicket execute(UUID id, DtoUpdateTicket request);
+    DtoTicket execute(DtoUpdateTicket request);
 }

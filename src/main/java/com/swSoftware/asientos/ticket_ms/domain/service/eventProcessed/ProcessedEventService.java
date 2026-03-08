@@ -19,8 +19,8 @@ public class ProcessedEventService implements IEventProcessedService {
     private final EventProcessedRepository eventProcessedRepository;
 
     @Override
-    public void saveEventProcessed(EventProcessedModel request){
-        eventProcessedRepository.save(request);
+    public void saveEventProcessedAndFlush(EventProcessedModel request){
+        eventProcessedRepository.saveAndFlush(request);
         log.info(MESSAGE_EVENT_PROCESSED_SAVED.toString());
 
     }

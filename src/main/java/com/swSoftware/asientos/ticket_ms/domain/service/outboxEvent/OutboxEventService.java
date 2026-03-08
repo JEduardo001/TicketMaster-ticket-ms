@@ -1,5 +1,6 @@
 package com.swSoftware.asientos.ticket_ms.domain.service.outboxEvent;
 
+import com.app.events.CreateTicketEvent;
 import com.app.events.ReserveEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swSoftware.asientos.seat_ms.domain.status.StatusEvent;
@@ -49,7 +50,7 @@ public class OutboxEventService<T> implements IOutboxEventService<T> {
 
         for (OutboxEventModel e : events) {
             try {
-                ReserveEvent event = objectMapper.readValue(e.getPayload(), ReserveEvent.class);
+                CreateTicketEvent event = objectMapper.readValue(e.getPayload(), CreateTicketEvent.class);
 
                 kafkaProducer.send(event,e.getNameTopic(), e.getCorrelationId());
                 e.setStatus(StatusEvent.SENT);

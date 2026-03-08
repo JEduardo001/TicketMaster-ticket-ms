@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -21,7 +22,9 @@ public class TicketModel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "seatReserved_id")
+    private List<SeatReservedDetailModel> seatsReserved;
     @Enumerated(EnumType.STRING)
     private StatusTicket status;
     private Instant createAt;
