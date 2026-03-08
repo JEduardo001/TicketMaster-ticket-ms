@@ -13,7 +13,7 @@ import java.util.UUID;
 public class UpdateTicketService implements UpdateTicketUseCase {
 
     @Override
-    public DtoTicket execute(UUID id, DtoUpdateTicket request) {
+    public DtoTicket execute(DtoUpdateTicket request) {
         return null;
     }
 }
