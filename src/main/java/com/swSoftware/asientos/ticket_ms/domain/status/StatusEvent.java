@@ -1,4 +1,4 @@
-package com.swSoftware.asientos.seat_ms.domain.status;
+package com.swSoftware.asientos.ticket_ms.domain.status;
 
 public enum StatusEvent {
     SENT,

@@ -1,6 +1,6 @@
 package com.swSoftware.asientos.ticket_ms.domain.model;
 
-import com.swSoftware.asientos.seat_ms.domain.status.StatusEvent;
+import com.swSoftware.asientos.ticket_ms.domain.status.StatusEvent;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
